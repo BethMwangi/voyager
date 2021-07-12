@@ -1,0 +1,101 @@
+/*
+Theme Name: MambaOne
+Theme URI: http://voyager.test/theme
+Author: Your Name
+Author URI: http://voyager.test
+Description: Mamba custom theme
+Version: 1.0.0
+Author: Beth Mwangi
+Author URI: http://voyager.test/beth
+License: GNU General Public License v2 or later
+License URI: <https://www.gnu.org/licenses/gpl-2.0.html>
+Text Domain: voyager-theme
+Tags: custom-background, responsive
+*/
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.row.content {height: 450px}
+
+.sidenav {
+    background:rgba(0, 0, 0, 0.75);
+    height: 100%;
+    border:1px solid #111;
+    box-shadow:0px 4px 5px rgba(0, 0, 0, 0.75);
+
+}
+
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+
+.logo {
+    text-transform: lowercase;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.logo a {
+    display: block;
+    padding: 1em 0;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: .15s linear color;
+}
+.logo a:hover {
+    color: #fff;
+}
+
+
+.sidenav li{
+    font-size:16px;
+    font-weight:300;
+    text-align:center;
+    position:relative;
+    height:40px;
+    line-height:40px;
+    margin-top:10px;
+    overflow:hidden;
+    width:90%;
+    cursor:pointer;
+}
+.sidenav a{
+    color: #FFFFFF;
+    letter-spacing: 0px;
+    font-family: proxima-nova;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: 0em;
+    line-height: 1.5em;
+    font-size: 17px;
+    display: block;
+    padding: .2em;
+}
+.navbar-nav a {
+    margin:20px 0px 20px 0px;
+    list-style: none;
+    text-align:right;
+}
+.navbar-nav li {
+    padding: 0px 20px 0px 0px;
+    display: inline;
+}
+.navbar-nav a {
+    color:#FFFFFF;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {height:auto;}
+}
