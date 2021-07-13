@@ -59,5 +59,67 @@ function product_woocommerce_custom_meta_fields_display()
         echo esc_html($custom_fields_woocommerce_title);
     }
 }
+
 add_action('woocommerce_single_product_summary', 'product_woocommerce_custom_meta_fields_display', 6);
+
+
+function lesson_register_post_type()
+{
+    $labels = array(
+        'name' => __('Lessons', 'cpt'),
+        'singular_name' => __('Lesson', 'cpt'),
+        'menu_name' => _x('Lessons', 'admin menu'),
+        'add_new' => __('New Lesson', 'cpt'),
+        'add_new_item' => __('Add New Lesson', 'cpt'),
+        'edit_item' => __('Edit Lesson', 'cpt'),
+        'new_item' => __('New Lesson', 'cpt'),
+        'view_item' => __('View Lessons', 'cpt'),
+        'search_items' => __('Search Lessons', 'cpt'),
+        'not_found' => __('No Lessons Found', 'cpt'),
+        'not_found_in_trash' => __('No Lessons found in Trash', 'cpt'),
+    );
+    $args = array(
+        'labels' => $labels,
+        'has_archive' => true,
+        'public' => true,
+        'hierarchical' => false,
+        'supports' => array(
+            'title',
+            'editor',
+            'author',
+            'excerpt',
+            'custom-fields',
+            'thumbnail',
+            'post-formats',
+            'page-attributes'
+        ),
+        'taxonomies' => 'category',
+        'rewrite' => array('slug' => 'lesson'),
+        'show_in_rest' => true
+    );
+
+    register_post_type('cpt_lessons', $args);
+}
+
+add_action('init', 'lesson_register_post_type');
+
+
+add_filter( 'template_include', 'lesson_template_function', 1 );
+
+function lesson_template_function( $template_path )
+{
+    if (get_post_type() == 'cpt_lessons') {
+        if (is_single()) {
+            if ($theme_file = locate_template(array('single-lessons.php'))) {
+                $template_path = $theme_file;
+            } else {
+                $template_path = plugin_dir_path(__FILE__) . '/single-lessons.php';
+            }
+        }
+    }
+    return $template_path;
+}
+
+
+
 
