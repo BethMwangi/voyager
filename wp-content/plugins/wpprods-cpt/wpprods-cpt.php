@@ -5,13 +5,13 @@ Plugin Name: WPProds CPT
 
 Description: Plugin to create a custom meta field for woo product
 
-Author: BethMwangi
+Author: Beth Mwangi
 
 Author URI: https://automattic.com/wordpress-plugins/
 
 License: GPLv2 or later
 
-Text Domain: akismet
+Text Domain: wp_prods
 
 */
 
@@ -66,17 +66,17 @@ add_action('woocommerce_single_product_summary', 'product_woocommerce_custom_met
 function lesson_register_post_type()
 {
     $labels = array(
-        'name' => __('Lessons', 'cpt'),
-        'singular_name' => __('Lesson', 'cpt'),
+        'name' => __('Lessons', 'wp_prods'),
+        'singular_name' => __('Lesson', 'wp_prods'),
         'menu_name' => _x('Lessons', 'admin menu'),
-        'add_new' => __('New Lesson', 'cpt'),
-        'add_new_item' => __('Add New Lesson', 'cpt'),
-        'edit_item' => __('Edit Lesson', 'cpt'),
-        'new_item' => __('New Lesson', 'cpt'),
-        'view_item' => __('View Lessons', 'cpt'),
-        'search_items' => __('Search Lessons', 'cpt'),
-        'not_found' => __('No Lessons Found', 'cpt'),
-        'not_found_in_trash' => __('No Lessons found in Trash', 'cpt'),
+        'add_new' => __('New Lesson', 'wp_prods'),
+        'add_new_item' => __('Add New Lesson', 'wp_prods'),
+        'edit_item' => __('Edit Lesson', 'wp_prods'),
+        'new_item' => __('New Lesson', 'wp_prods'),
+        'view_item' => __('View Lessons', 'wp_prods'),
+        'search_items' => __('Search Lessons', 'wp_prods'),
+        'not_found' => __('No Lessons Found', 'wp_prods'),
+        'not_found_in_trash' => __('No Lessons found in Trash', 'wp_prods'),
     );
     $args = array(
         'labels' => $labels,
@@ -104,21 +104,7 @@ function lesson_register_post_type()
 add_action('init', 'lesson_register_post_type');
 
 
-add_filter( 'template_include', 'lesson_template_function', 1 );
 
-function lesson_template_function( $template_path )
-{
-    if (get_post_type() == 'cpt_lessons') {
-        if (is_single()) {
-            if ($theme_file = locate_template(array('single-lessons.php'))) {
-                $template_path = $theme_file;
-            } else {
-                $template_path = plugin_dir_path(__FILE__) . '/single-lessons.php';
-            }
-        }
-    }
-    return $template_path;
-}
 
 
 
