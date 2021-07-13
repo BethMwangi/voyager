@@ -86,9 +86,11 @@ function lesson_register_post_type()
         'supports' => array(
             'title',
             'editor',
+            'author',
             'excerpt',
             'custom-fields',
             'thumbnail',
+            'post-formats',
             'page-attributes'
         ),
         'taxonomies' => 'category',
@@ -117,3 +119,7 @@ function lesson_template_function( $template_path )
     }
     return $template_path;
 }
+
+
+
+
