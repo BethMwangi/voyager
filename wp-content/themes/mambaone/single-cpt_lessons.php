@@ -1,12 +1,14 @@
 <?php
 
-/*Template Name: Single cpt Lessons
-*/
+/**
+ * Template Name: Single cpt Lessons
+ */
 
 get_header();
 
 $args = array(
     'post_type' => 'cpt_lessons',
+    'post_status' => 'publish',
     'orderby' => 'publish_date',
     'order' => 'DESC',
     'posts_per_page' => 3,
@@ -15,24 +17,27 @@ $args = array(
 $loop = new WP_Query($args);
 ?>
 <?php
-if ($loop->have_posts()): ?>
+
+
+if ($loop->have_posts()) : ?>
     <ul>
         <?php
         while ($loop->have_posts()) : $loop->the_post(); ?>
             <li>
                 <a href="<?php
-                the_permalink(); ?>"><?php
-                    the_title(); ?></a>
+                the_permalink(); ?>">
+                    <?php
+                    the_title(); ?>
+                </a>
             </li>
-        <?php
-        endwhile; ?>
+        <?php endwhile; ?>
     </ul>
-<?php
-endif; ?>
+<?php endif; ?>
 
 <?php
 $second_args = array(
     'post_type' => 'cpt_lessons',
+    'post_status' => 'publish',
     'orderby' => 'title',
     'order' => 'DESC',
 );
@@ -40,7 +45,7 @@ $second_args = array(
 $second_loop = new WP_Query($second_args);
 ?>
 <?php
-if ($second_loop->have_posts()): ?>
+if ($second_loop->have_posts()) : ?>
     <ul>
         <?php
         while ($second_loop->have_posts()) : $second_loop->the_post(); ?>
@@ -49,15 +54,10 @@ if ($second_loop->have_posts()): ?>
                 the_permalink(); ?>"><?php
                     the_title(); ?></a>
             </li>
-        <?php
-        endwhile; ?>
+        <?php endwhile; ?>
     </ul>
-<?php
-endif; ?>
+<?php endif; ?>
 <?php
 
-wp_reset_query();
 get_footer();
-
-
 

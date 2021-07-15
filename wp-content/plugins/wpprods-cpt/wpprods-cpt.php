@@ -1,19 +1,13 @@
 <?php
-/*
-
-Plugin Name: WPProds CPT
-
-Description: Plugin to create a custom meta field for woo product
-
-Author: Beth Mwangi
-
-Author URI: https://automattic.com/wordpress-plugins/
-
-License: GPLv2 or later
-
-Text Domain: wp_prods
-
-*/
+/**
+ * Plugin Name: WPProds CPT
+ * Description: Plugin to create a custom meta field for woo product
+ * Author: Beth Mwangi
+ * Author URI: https://automattic.com/wordpress-plugins/
+ * License: GPLv2 or later
+ * Text Domain: wp_prods
+ *
+ */
 
 add_action('woocommerce_product_options_general_product_data', 'product_add_custom_meta_field');
 
@@ -62,7 +56,10 @@ function product_woocommerce_custom_meta_fields_display()
 
 add_action('woocommerce_single_product_summary', 'product_woocommerce_custom_meta_fields_display', 6);
 
-
+/**
+ * register lesson post type
+ *
+ */
 function lesson_register_post_type()
 {
     $labels = array(
