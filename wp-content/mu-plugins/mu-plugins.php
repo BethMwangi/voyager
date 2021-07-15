@@ -11,3 +11,4 @@
  */
 
 require_once 'cmb2/init.php';
+require_once( dirname(__FILE__) . '/../plugins/wpprods-cpt/wpprods-cpt.php');

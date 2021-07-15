@@ -100,6 +100,46 @@ function lesson_register_post_type()
 
 add_action('init', 'lesson_register_post_type');
 
+add_action('cmb2_admin_init', 'register_lesson_metabox');
+
+function register_lesson_metabox()
+{
+    /**
+     * Initiate the metabox
+     */
+    $cmb = new_cmb2_box(
+        array(
+            'id' => 'lesson_metabox',
+            'title' => __('Lesson Metabox', 'cmb2'),
+            'object_types' => array('cpt_lessons',),
+            'context' => 'normal',
+            'priority' => 'high',
+            'show_names' => true,
+        )
+    );
+
+    $cmb->add_field(
+        array(
+            'name' => __('Lesson Modules', 'cmb2'),
+            'desc' => __('The leson module', 'cmb2'),
+            'id' => 'cpt_module',
+            'type' => 'text',
+            'show_on_cb' => 'cmb2_hide_if_no_cats',
+        )
+    );
+
+    $cmb->add_field(
+        array(
+            'name' => __('Lesson URL', 'cmb2'),
+            'desc' => __('Add Lesson URL', 'cmb2'),
+            'id' => 'lesson_url',
+            'type' => 'text_url',
+        )
+    );
+}
+
+
+
 
 
 
